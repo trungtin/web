@@ -9,6 +9,7 @@ import { RouteSteps } from 'components/RouteSteps/RouteSteps'
 import { useModal } from 'context/ModalProvider/ModalProvider'
 import { BigNumber } from 'lib/bignumber/bignumber'
 
+import { Broadcast } from './views/Broadcast'
 import { Confirm } from './views/Confirm'
 
 type StakingConfirmProps = {
@@ -50,6 +51,7 @@ const CosmosStakingRouter = ({ cryptoAmount, assetId, fiatRate, apr }: StakingLo
       <Switch location={location} key={location.key}>
         <Flex minWidth={{ base: '100%', xl: '500px' }} flexDir={{ base: 'column', lg: 'row' }}>
           <RouteSteps assetSymbol={asset.symbol} px={23} py={43} routes={depositRoutes} />
+
           <Flex
             flexDir='column'
             width='full'
@@ -66,7 +68,12 @@ const CosmosStakingRouter = ({ cryptoAmount, assetId, fiatRate, apr }: StakingLo
                 />
               </Route>
               <Route exact key={StakingPath.Broadcast} path={StakingPath.Broadcast}>
-                TODO Staking Broadcast component
+                <Broadcast
+                  apr={apr}
+                  cryptoStakeAmount={cryptoAmount}
+                  assetId={assetId}
+                  fiatRate={fiatRate}
+                />
               </Route>
             </Flex>
           </Flex>
