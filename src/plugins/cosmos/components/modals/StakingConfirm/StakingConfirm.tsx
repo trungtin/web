@@ -51,7 +51,6 @@ const CosmosStakingRouter = ({ cryptoAmount, assetId, fiatRate, apr }: StakingLo
       <Switch location={location} key={location.key}>
         <Flex minWidth={{ base: '100%', xl: '500px' }} flexDir={{ base: 'column', lg: 'row' }}>
           <RouteSteps assetSymbol={asset.symbol} px={23} py={43} routes={depositRoutes} />
-
           <Flex
             flexDir='column'
             width='full'
