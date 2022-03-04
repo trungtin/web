@@ -1,10 +1,10 @@
-import { Asset, chainAdapters } from '@shapeshiftoss/types'
-import { TradeType, TxTransfer, TxType } from '@shapeshiftoss/types/dist/chain-adapters'
+import { Asset, chainAdapters, ChainTypes } from '@shapeshiftoss/types'
+import { TradeType, TxStatus, TxTransfer, TxType } from '@shapeshiftoss/types/dist/chain-adapters'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ensReverseLookup } from 'lib/ens'
 import { ReduxState } from 'state/reducer'
-import { selectAssetByCAIP19, selectTxById } from 'state/slices/selectors'
+import { selectAssetByCAIP19 } from 'state/slices/selectors'
 import { Tx } from 'state/slices/txHistorySlice/txHistorySlice'
 
 // Adding a new supported method? Also update transactionRow.parser translations accordingly
@@ -31,7 +31,7 @@ export interface TxDetails {
   feeAsset: Asset
   buyAsset: Asset
   sellAsset: Asset
-  value: string
+  value?: string
   to: string
   ensTo?: string
   from: string
@@ -93,7 +93,7 @@ export const useTxDetails = (txId: string, activeAsset?: Asset): TxDetails => {
   )
   const tradeAsset = activeAsset?.symbol === sellAsset?.symbol ? sellAsset : buyAsset
 
-  const value = standardTx?.value ?? tradeTx?.value ?? '0'
+  const value = standardTx?.value ?? tradeTx?.value ?? undefined
   const to = standardTx?.to ?? tradeTx?.to ?? ''
   const from = standardTx?.from ?? tradeTx?.from ?? ''
 
