@@ -7,15 +7,12 @@ import { Asset } from '@shapeshiftoss/types'
 import { AprTag } from 'plugins/cosmos/components/AprTag/AprTag'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useTranslate } from 'react-polyglot'
-import { useHistory } from 'react-router-dom'
 import { Amount } from 'components/Amount/Amount'
 import { MiddleEllipsis } from 'components/MiddleEllipsis/MiddleEllipsis'
 import { Text } from 'components/Text'
 import { useModal } from 'context/ModalProvider/ModalProvider'
 import { BigNumber } from 'lib/bignumber/bignumber'
 import { bnOrZero } from 'lib/bignumber/bignumber'
-
-import { StakingPath } from '../StakingConfirm'
 
 export enum InputType {
   Crypto = 'crypto',
@@ -47,7 +44,6 @@ const DEFAULT_VALIDATOR_NAME = 'Shapeshift Validator'
 // TODO: Wire up the whole component with staked data
 export const Broadcast = ({ apr, assetId, cryptoStakeAmount, fiatRate }: StakeProps) => {
   const methods = useForm<StakingValues>({
-    mode: 'onChange',
     defaultValues: {
       [Field.FeeType]: chainAdapters.FeeDataKey.Average
     }
@@ -57,9 +53,8 @@ export const Broadcast = ({ apr, assetId, cryptoStakeAmount, fiatRate }: StakePr
 
   const { cosmosStakingConfirm } = useModal()
 
-  const memoryHistory = useHistory()
   const onSubmit = (_: any) => {
-    memoryHistory.push(StakingPath.Broadcast)
+    // TODO: handle submit when wired up
   }
 
   const cryptoYield = calculateYearlyYield(apr, cryptoStakeAmount.toPrecision())
