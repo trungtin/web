@@ -11,7 +11,8 @@ export enum DefiType {
   Pool = 'pool',
   Vault = 'vault',
   Staking = 'staking',
-  Farming = 'farming'
+  Farming = 'farming',
+  TokenStaking = 'token staking'
 }
 
 export enum DefiProvider {
