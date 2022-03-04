@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ensReverseLookup } from 'lib/ens'
 import { ReduxState } from 'state/reducer'
-import { selectAssetByCAIP19 } from 'state/slices/selectors'
+import { selectAssetByCAIP19, selectTxById } from 'state/slices/selectors'
 import { Tx } from 'state/slices/txHistorySlice/txHistorySlice'
 
 // Adding a new supported method? Also update transactionRow.parser translations accordingly
