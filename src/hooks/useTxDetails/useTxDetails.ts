@@ -1,5 +1,5 @@
-import { Asset, chainAdapters, ChainTypes } from '@shapeshiftoss/types'
-import { TradeType, TxStatus, TxTransfer, TxType } from '@shapeshiftoss/types/dist/chain-adapters'
+import { Asset, chainAdapters } from '@shapeshiftoss/types'
+import { TradeType, TxTransfer, TxType } from '@shapeshiftoss/types/dist/chain-adapters'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ensReverseLookup } from 'lib/ens'
